@@ -1,0 +1,26 @@
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.name {
+  margin: 0;
+  color: oklch(49.1% 0.27 292.581);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.role {
+  margin: 0;
+  color: oklch(38% 0.189 293.745 / 0.6);
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+}

@@ -1,0 +1,62 @@
+/* A second, complete look for <NDCard>, owned by this page rather than by the
+   component. Same markup, same slots, same DOM — but where Card.module.css is a
+   soft rounded column, this is a hard-edged two-column grid: the header becomes
+   a vertical rail, the body and footer stack beside it, and the whole thing sits
+   on a solid offset shadow instead of a blurred one. */
+
+.root {
+  display: grid;
+  /* The header is a rail down the left; body and footer share column two. */
+  grid-template-columns: 8.5rem 1fr;
+  overflow: hidden;
+  border: 3px solid oklch(28.3% 0.141 291.089);
+  border-radius: 0;
+  background-color: oklch(96.9% 0.016 293.756);
+  box-shadow: 10px 10px 0 0 oklch(28.3% 0.141 291.089);
+  transition-property: translate, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (hover: hover) {
+  .root:hover {
+    translate: -3px -3px;
+    box-shadow: 13px 13px 0 0 oklch(28.3% 0.141 291.089);
+  }
+}
+
+.header {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem 0.75rem;
+  background-color: oklch(28.3% 0.141 291.089);
+  color: oklch(81.1% 0.111 293.571);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.body {
+  grid-column: 2;
+  padding: 1rem;
+  color: oklch(28.3% 0.141 291.089);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.footer {
+  grid-column: 2;
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin: 0 1rem 1rem;
+  padding-top: 0.75rem;
+  border-top: 2px dashed oklch(28.3% 0.141 291.089 / 0.35);
+}
