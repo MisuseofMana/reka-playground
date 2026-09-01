@@ -1,0 +1,21 @@
+.root {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 9999px;
+  background-color: oklch(89.4% 0.057 293.283);
+  color: oklch(49.1% 0.27 292.581);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

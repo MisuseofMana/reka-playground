@@ -1,0 +1,64 @@
+/* Everything that makes it a button — shape, type, spacing, states — lives here
+   once. The four variants below change nothing but two colours. */
+.base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
+  border: 0;
+  border-radius: 9999px;
+  background-color: oklch(92.9% 0.013 255.508);
+  color: oklch(37.2% 0.044 257.287);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  outline: none;
+  transition-property: filter, box-shadow, translate;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (hover: hover) {
+  .base:hover {
+    filter: brightness(1.08);
+    translate: 0 -0.0625rem;
+  }
+}
+
+.base:focus-visible {
+  box-shadow: 0 0 0 3px oklch(89.4% 0.057 293.283);
+}
+
+.base:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* `composes` pulls in every declaration above by reference — it does not copy
+   the CSS. The class list handed to the template becomes "brand base", so the
+   shared rule is emitted exactly once no matter how many variants exist. */
+.brand {
+  composes: base;
+  background-color: oklch(54.1% 0.281 293.009);
+  color: #fff;
+}
+
+.success {
+  composes: base;
+  background-color: oklch(59.6% 0.145 163.225);
+  color: oklch(97.9% 0.021 166.113);
+}
+
+.warning {
+  composes: base;
+  background-color: oklch(87.9% 0.169 91.605);
+  color: oklch(27.9% 0.077 45.635);
+}
+
+.danger {
+  composes: base;
+  background-color: oklch(64.5% 0.246 16.439);
+  color: #fff;
+}
