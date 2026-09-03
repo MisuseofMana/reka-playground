@@ -49,7 +49,7 @@ const entries: Entry[] = router
       title: titleize(last),
       // A page nested in a directory groups under it; top-level pages fall
       // into a catch-all bucket.
-      group: segments.length > 1 ? titleize(segments[0]!) : "Other",
+      group: segments.length > 1 ? titleize(segments[0]!) : "Root",
     };
   })
   .sort((a, b) => a.path.localeCompare(b.path));
@@ -62,11 +62,7 @@ for (const entry of entries) {
 }
 /* "Other" last — it reads as leftovers rather than a topic. */
 groups.sort((a, b) =>
-  a.name === "Other"
-    ? 1
-    : b.name === "Other"
-      ? -1
-      : a.name.localeCompare(b.name),
+  a.name === "Root" ? 1 : b.name === "Root" ? -1 : a.name.localeCompare(b.name),
 );
 </script>
 
