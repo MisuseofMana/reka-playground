@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import styles from "./UserCard.module.css";
+import { userCardRecipe } from "./UserCard.recipe";
 
-// NDCard and NDAvatar are auto-imported. This component owns no surface styling
-// of its own — it borrows Card's shell and Avatar's badge, and only styles the
-// small identity block that is genuinely its own.
 const props = defineProps<{
   name: string;
   role: string;
 }>();
+
+const classes = userCardRecipe();
 
 defineSlots<{
   /** Body copy for this person. */
@@ -23,11 +22,11 @@ defineSlots<{
 <template>
   <NDCard>
     <template #header>
-      <div :class="styles.identity">
+      <div :class="classes.identity()">
         <NDAvatar :name="name" />
-        <div :class="styles.meta">
-          <p :class="styles.name">{{ name }}</p>
-          <p :class="styles.role">{{ role }}</p>
+        <div :class="classes.meta()">
+          <p :class="classes.name()">{{ name }}</p>
+          <p :class="classes.role()">{{ role }}</p>
         </div>
       </div>
     </template>

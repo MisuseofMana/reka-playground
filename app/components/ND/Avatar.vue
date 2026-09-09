@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import styles from "./Avatar.module.css";
+import { avatarRecipe } from "./Avatar.recipe";
 
 const props = withDefaults(
   defineProps<{
     name: string;
-    /** Falls back to the name's initials when omitted. */
     src?: string;
   }>(),
   { src: undefined },
 );
+
+const classes = avatarRecipe();
 
 const initials = computed(() =>
   props.name
@@ -23,8 +24,8 @@ const initials = computed(() =>
 </script>
 
 <template>
-  <span :class="styles.root" role="img" :aria-label="name">
-    <img v-if="src" :class="styles.image" :src="src" alt="" />
+  <span :class="classes.root()" role="img" :aria-label="name">
+    <img v-if="src" :class="classes.image()" :src="src" alt="" />
     <template v-else>{{ initials }}</template>
   </span>
 </template>

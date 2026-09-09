@@ -18,25 +18,14 @@ const onSubmit = handleSubmit((values) => {
 </script>
 
 <template>
-  <form class="use-form-demo" @submit="onSubmit">
+  <form class="flex flex-col gap-5" @submit="onSubmit">
     <NDFormInput name="firstName" label="First Name" has-asterisk />
     <NDFormInput name="lastName" label="Last Name" has-asterisk />
     <NDFormInput name="email" label="Email" type="email" has-asterisk />
     <NDFormSaveButton />
-    <pre v-if="result" class="use-form-demo__result">{{
-      JSON.stringify(result, null, 2)
-    }}</pre>
+    <pre
+      v-if="result"
+      class="rounded-2xl border-2 border-emerald-200 bg-emerald-50/50 p-4 font-mono text-sm text-emerald-800"
+    >{{ JSON.stringify(result, null, 2) }}</pre>
   </form>
 </template>
-
-<style scoped>
-@reference "tailwindcss";
-
-.use-form-demo {
-  @apply flex flex-col gap-5;
-}
-
-.use-form-demo__result {
-  @apply rounded-2xl border-2 border-emerald-200 bg-emerald-50/50 p-4 font-mono text-sm text-emerald-800;
-}
-</style>
