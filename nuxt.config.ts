@@ -4,6 +4,9 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  app: {
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
+  },
   modules: ['@compodium/nuxt'],
   css: ['~/assets/css/main.css'],
   // Nuxt scans pages/ for every extension in `extensions`, not just .vue, so
