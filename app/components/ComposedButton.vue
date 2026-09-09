@@ -1,29 +1,25 @@
 <script setup lang="ts">
-import styles from "./ComposedButton.module.css";
+import { computed } from "vue";
+import {
+  composedButtonRecipe,
+  type ComposedButtonVariant,
+} from "./ComposedButton.recipe";
 
-export type ComposedButtonVariant =
-  | "base"
-  | "brand"
-  | "success"
-  | "warning"
-  | "danger";
-
-withDefaults(
+const props = withDefaults(
   defineProps<{
-    /**
-     * Picks the class out of the module. Every value except `base` is a class
-     * that `composes: base`, so the lookup returns two class names at once —
-     * the variant's colours and the shared button rule.
-     */
     variant?: ComposedButtonVariant;
     type?: "button" | "submit" | "reset";
     disabled?: boolean;
   }>(),
   {
-    variant: "base",
+    variant: undefined,
     type: "button",
     disabled: false,
   },
+);
+
+const classes = computed(() =>
+  composedButtonRecipe({ variant: props.variant }),
 );
 
 defineSlots<{
@@ -32,7 +28,7 @@ defineSlots<{
 </script>
 
 <template>
-  <button :class="styles[variant]" :type="type" :disabled="disabled">
+  <button :class="classes" :type="type" :disabled="disabled">
     <slot />
   </button>
 </template>

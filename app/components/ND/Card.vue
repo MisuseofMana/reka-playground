@@ -1,20 +1,7 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import defaultStyles from "./Card.module.css";
+import { cardRecipe } from "./Card.recipe";
 
-const props = withDefaults(
-  defineProps<{
-    /**
-     * Hand the card a different CSS Module to restyle it. Merged over the
-     * card's own classes, so a module that only defines `.root` restyles the
-     * surface and leaves the header, body, and footer alone.
-     */
-    styles?: Readonly<Record<string, string>>;
-  }>(),
-  { styles: undefined },
-);
-
-const s = computed(() => ({ ...defaultStyles, ...props.styles }));
+const classes = cardRecipe();
 
 defineSlots<{
   /** Sits above the body, laid out as a row. */
@@ -27,16 +14,16 @@ defineSlots<{
 </script>
 
 <template>
-  <article :class="s.root">
-    <header v-if="$slots.header" :class="s.header">
+  <article :class="classes.root()">
+    <header v-if="$slots.header" :class="classes.header()">
       <slot name="header" />
     </header>
 
-    <div :class="s.body">
+    <div :class="classes.body()">
       <slot />
     </div>
 
-    <footer v-if="$slots.footer" :class="s.footer">
+    <footer v-if="$slots.footer" :class="classes.footer()">
       <slot name="footer" />
     </footer>
   </article>

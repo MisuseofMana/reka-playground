@@ -14,6 +14,7 @@ import {
 } from "reka-ui";
 import { useField } from "vee-validate";
 import { computed, useId } from "vue";
+import { formSelectRecipe } from "./Select.recipe";
 
 const props = withDefaults(
   defineProps<{
@@ -22,6 +23,7 @@ const props = withDefaults(
     placeholder?: string;
     options: { label: string; value: string }[];
     hasAsterisk?: boolean;
+    modelValue?: string;
   }>(),
   {
     label: "",
@@ -33,12 +35,14 @@ const props = withDefaults(
 const inputId = useId();
 const errorId = computed(() => `${inputId}-error`);
 
-const { value, errorMessage, handleBlur, handleChange } = useField<string>(
+const { value, errorMessage, handleBlur } = useField<string>(
   () => props.name,
+  undefined,
+  { syncVModel: true },
 );
 
 function onSelect(next: string | undefined) {
-  handleChange(next ?? "");
+  value.value = next ?? "";
 }
 
 function onOpenChange(open: boolean) {
@@ -50,11 +54,13 @@ function onOpenChange(open: boolean) {
 const formattedLabel = computed(() => {
   return props.label + (props.hasAsterisk ? "*" : "");
 });
+
+const classes = formSelectRecipe();
 </script>
 
 <template>
-  <div class="nd-form-select">
-    <Label class="nd-form-select__label" :for="inputId">
+  <div :class="classes.root()">
+    <Label :class="classes.label()" :for="inputId">
       {{ formattedLabel }}
     </Label>
     <SelectRoot
@@ -64,7 +70,7 @@ const formattedLabel = computed(() => {
     >
       <SelectTrigger
         :id="inputId"
-        class="nd-form-select__trigger"
+        :class="classes.trigger()"
         :aria-invalid="!!errorMessage"
         :aria-describedby="errorMessage ? errorId : undefined"
       >
@@ -73,15 +79,15 @@ const formattedLabel = computed(() => {
       </SelectTrigger>
       <SelectPortal>
         <SelectContent
-          class="nd-form-select__content"
+          :class="classes.content()"
           position="popper"
           :side-offset="4"
         >
-          <SelectViewport class="nd-form-select__viewport">
+          <SelectViewport :class="classes.viewport()">
             <SelectItem
               v-for="option in options"
               :key="option.value"
-              class="nd-form-select__item"
+              :class="classes.item()"
               :value="option.value"
             >
               <SelectItemText>{{ option.label }}</SelectItemText>
@@ -94,46 +100,10 @@ const formattedLabel = computed(() => {
     <p
       v-if="errorMessage"
       :id="errorId"
-      class="nd-form-select__error"
+      :class="classes.error()"
       role="alert"
     >
       {{ errorMessage }}
     </p>
   </div>
 </template>
-
-<style scoped>
-@reference "tailwindcss";
-
-.nd-form-select {
-  @apply flex flex-col gap-1.5;
-}
-
-.nd-form-select__label {
-  @apply text-sm font-semibold tracking-wide text-violet-700;
-}
-
-.nd-form-select__trigger {
-  @apply flex w-full items-center justify-between rounded-2xl border-2 border-violet-200 bg-violet-50/50 px-3 py-2 text-left shadow-sm outline-none transition hover:border-violet-300 focus:border-violet-500 focus:bg-white focus:shadow-md focus:ring-4 focus:ring-violet-200 data-[state=open]:border-violet-500 data-[state=open]:bg-white data-[state=open]:ring-4 data-[state=open]:ring-violet-200 aria-invalid:border-rose-400 aria-invalid:bg-rose-50;
-}
-
-.nd-form-select__error {
-  @apply m-0 text-sm font-medium text-rose-500;
-}
-</style>
-
-<style>
-@reference "tailwindcss";
-
-.nd-form-select__content {
-  @apply z-50 w-[var(--reka-select-trigger-width)] overflow-hidden rounded-2xl border-2 border-violet-200 bg-white shadow-lg;
-}
-
-.nd-form-select__viewport {
-  @apply p-1;
-}
-
-.nd-form-select__item {
-  @apply cursor-pointer rounded-xl px-3 py-2 transition data-[highlighted]:bg-violet-100 data-[highlighted]:text-violet-900;
-}
-</style>
