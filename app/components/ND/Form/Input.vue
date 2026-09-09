@@ -10,6 +10,7 @@ const props = withDefaults(
     label?: string;
     hasAsterisk?: boolean;
     autocomplete?: string;
+    modelValue?: string;
   }>(),
   {
     type: "text",
@@ -18,6 +19,10 @@ const props = withDefaults(
   },
 );
 
+defineEmits<{
+  "update:modelValue": [value: string];
+}>();
+
 const inputId = useId();
 const errorId = computed(() => `${inputId}-error`);
 
@@ -25,7 +30,11 @@ const formattedLabel = computed(() => {
   return props.label + (props.hasAsterisk ? "*" : "");
 });
 
-const { value, errorMessage, handleBlur } = useField<string>(() => props.name);
+const { value, errorMessage, handleBlur } = useField<string>(
+  () => props.name,
+  undefined,
+  { syncVModel: true },
+);
 </script>
 
 <template>
