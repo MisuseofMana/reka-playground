@@ -13,28 +13,6 @@ const fileName =
 const fileBody =
   "overflow-x-auto rounded-b-2xl border border-violet-200 bg-violet-50/50 p-4 font-mono text-[0.8125rem] leading-relaxed whitespace-pre text-violet-800";
 
-const form1Html = `<form @submit="onSubmit">
-  <NDFormInput name="firstName" label="First Name" has-asterisk />
-  <NDFormInput name="lastName" label="Last Name" has-asterisk />
-  <NDFormInput name="email" label="Email" type="email" has-asterisk />
-  <NDFormSaveButton />
-</form>`;
-
-const form2Html = `<form @submit.prevent="onStandaloneSubmit">
-  <NDFormInput
-    v-model="username"
-    name="username"
-    label="Username"
-    has-asterisk
-  />
-  <NDFormInput
-    v-model="bio"
-    name="bio"
-    label="Bio"
-  />
-  <NDFormSaveButton />
-</form>`;
-
 const username = ref("");
 const bio = ref("");
 const standaloneResult = ref<Record<string, string> | null>(null);
@@ -70,7 +48,14 @@ function onStandaloneSubmit() {
       </p>
       <div>
         <div :class="fileName">UseFormDemo.vue — template</div>
-        <pre :class="fileBody">{{ form1Html }}</pre>
+        <pre
+          :class="fileBody"
+        >&lt;form @submit="onSubmit"&gt;
+  &lt;NDFormInput name="firstName" label="First Name" has-asterisk /&gt;
+  &lt;NDFormInput name="lastName" label="Last Name" has-asterisk /&gt;
+  &lt;NDFormInput name="email" label="Email" type="email" has-asterisk /&gt;
+  &lt;NDFormSaveButton /&gt;
+&lt;/form&gt;</pre>
       </div>
       <div :class="card">
         <UseFormDemo />
@@ -86,7 +71,22 @@ function onStandaloneSubmit() {
       </p>
       <div>
         <div :class="fileName">vee-validate.vue — template</div>
-        <pre :class="fileBody">{{ form2Html }}</pre>
+        <pre
+          :class="fileBody"
+        >&lt;form @submit.prevent="onStandaloneSubmit"&gt;
+  &lt;NDFormInput
+    v-model="username"
+    name="username"
+    label="Username"
+    has-asterisk
+  /&gt;
+  &lt;NDFormInput
+    v-model="bio"
+    name="bio"
+    label="Bio"
+  /&gt;
+  &lt;NDFormSaveButton /&gt;
+&lt;/form&gt;</pre>
       </div>
       <div :class="card">
         <form class="flex flex-col gap-5" @submit.prevent="onStandaloneSubmit">
