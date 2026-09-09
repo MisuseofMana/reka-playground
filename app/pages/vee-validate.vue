@@ -35,7 +35,7 @@ function onStandaloneSubmit() {
       <h1 class="text-4xl font-bold text-violet-700">vee-validate</h1>
       <p class="text-lg text-violet-900/80">
         Proof that
-        <code class="font-mono">NDFormInput</code> works with both
+        <code class="font-mono">NDInput</code> works with both
         <code class="font-mono">useForm</code> context and standalone
         <code class="font-mono">v-model</code> binding.
       </p>
@@ -45,7 +45,7 @@ function onStandaloneSubmit() {
       <h2 :class="sectionTitle">Form 1 — useForm Context</h2>
       <p :class="note">
         Uses <code>useForm</code> with a <code>validationSchema</code>. Each
-        <code>NDFormInput</code> connects automatically via
+        <code>NDInput</code> connects automatically via
         <code>provide/inject</code>. Validation triggers on blur and blocks
         submission until all rules pass.
       </p>
@@ -57,19 +57,19 @@ function onStandaloneSubmit() {
     <section :class="section">
       <h2 :class="sectionTitle">Form 2 — Standalone v-model</h2>
       <p :class="note">
-        No <code>useForm</code>. Each <code>NDFormInput</code> is bound with
+        No <code>useForm</code>. Each <code>NDInput</code> is bound with
         <code>v-model</code> to a page-level <code>ref</code>. This proves
         <code>useField</code> works without a form context.
       </p>
       <div :class="card">
         <form class="flex flex-col gap-5" @submit.prevent="onStandaloneSubmit">
-          <NDFormInput
+          <NDInput
             v-model="username"
             name="username"
             label="Username"
             has-asterisk
           />
-          <NDFormInput
+          <NDInput
             v-model="bio"
             name="bio"
             label="Bio"
@@ -93,7 +93,7 @@ function onStandaloneSubmit() {
             </dl>
           </div>
 
-          <NDFormSaveButton />
+          <NDSaveButton />
 
           <div
             v-if="standaloneResult"

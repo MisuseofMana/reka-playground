@@ -52,7 +52,7 @@ const filteredItems = computed(() => {
       </a>
       <h1 class="text-4xl font-bold text-violet-700">Search Bar</h1>
       <p class="text-lg text-violet-900/80">
-        <code class="font-mono">NDFormInput</code> with an
+        <code class="font-mono">NDInput</code> with an
         <code class="font-mono">NDButton</code> in its trailing slot, used as a
         search filter without <code class="font-mono">useForm</code>.
       </p>
@@ -66,7 +66,12 @@ const filteredItems = computed(() => {
         the filter.
       </p>
       <form @submit.prevent="applyFilter">
-        <NDFormInput
+        <!-- 
+          ATTENTION: #trailing slot used to modify the dom of the input without the need for a new component.
+          We could componentize a new version of NDInput as NDSearchInput with the following HTML.
+        -->
+
+        <NDInput
           v-model="searchTerm"
           name="search"
           label="Search frameworks"
@@ -79,7 +84,7 @@ const filteredItems = computed(() => {
               Search
             </button>
           </template>
-        </NDFormInput>
+        </NDInput>
       </form>
     </section>
 

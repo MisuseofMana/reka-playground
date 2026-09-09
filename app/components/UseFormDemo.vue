@@ -19,10 +19,10 @@ const onSubmit = handleSubmit((values) => {
 
 <template>
   <form class="flex flex-col gap-5" @submit="onSubmit">
-    <NDFormInput name="firstName" label="First Name" has-asterisk />
-    <NDFormInput name="lastName" label="Last Name" has-asterisk />
-    <NDFormInput name="email" label="Email" type="email" has-asterisk />
-    <NDFormSaveButton />
+    <NDInput name="firstName" label="First Name" has-asterisk />
+    <NDInput name="lastName" label="Last Name" has-asterisk />
+    <NDInput name="email" label="Email" type="email" has-asterisk />
+    <NDSaveButton />
     <pre
       v-if="result"
       class="rounded-2xl border-2 border-emerald-200 bg-emerald-50/50 p-4 font-mono text-sm text-emerald-800"

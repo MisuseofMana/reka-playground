@@ -37,8 +37,7 @@ export type NDButtonSize = "sm" | "md" | "lg";
  *   fullWidth  → width
  *   compound   → box-shadow, text-transform  (families no one above touches)
  *
- * That discipline is the same idea as TailwindButton's grouped recipe, just
- * enforced by convention instead of by object keys.
+ * That discipline is enforced by convention.
  */
 export const buttonRecipe = tv({
   base: [
