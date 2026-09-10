@@ -39,20 +39,20 @@ const filteredItems = computed(() => {
   <div class="flex w-full max-w-3xl min-w-3xl flex-col gap-10 p-6">
     <DocsSection as="header">
       <DocsSourceLink />
-      <DocsHeading as="h1">Search Bar</DocsHeading>
-      <DocsParagraph>
+      <NDHeading as="h1">Search Bar</NDHeading>
+      <NDParagraph>
         <strong>NDInput</strong> with an <strong>NDButton</strong> in its
         trailing slot, used as a search filter without <em>useForm</em>.
-      </DocsParagraph>
+      </NDParagraph>
     </DocsSection>
 
     <DocsSection>
-      <DocsHeading>Filter</DocsHeading>
-      <DocsParagraph>
+      <NDHeading>Filter</NDHeading>
+      <NDParagraph>
         The button lives inside the input via the
         <em>#trailing</em> slot. Pressing Enter or clicking Search applies the
         filter.
-      </DocsParagraph>
+      </NDParagraph>
       <form @submit.prevent="applyFilter">
         <NDInput v-model="searchTerm" validationName="search" label="Search frameworks">
           <template #trailing>
@@ -68,7 +68,7 @@ const filteredItems = computed(() => {
     </DocsSection>
 
     <DocsSection>
-      <DocsHeading as="h3"> Results </DocsHeading>
+      <NDHeading as="h3"> Results </NDHeading>
       <span
         v-if="activeFilter"
         class="ml-2 rounded-full max-w-sm bg-brand-100 px-2.5 py-0.5 text-xs font-normal text-brand-700"

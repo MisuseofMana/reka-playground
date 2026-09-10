@@ -23,58 +23,58 @@ const html = ref(`
   <div class="flex w-full max-w-3xl flex-col gap-10 p-6">
     <DocsSection as="header">
       <DocsSourceLink />
-      <DocsHeading as="h1">Rich Text</DocsHeading>
-      <DocsParagraph>
+      <NDHeading as="h1">Rich Text</NDHeading>
+      <NDParagraph>
         A WYSIWYG field, and the one case where a Tailwind utility beats a
         component.
-      </DocsParagraph>
+      </NDParagraph>
     </DocsSection>
 
     <DocsSection as="main">
-      <DocsHeading as="h2">Editing</DocsHeading>
-      <DocsParagraph>
+      <NDHeading as="h2">Editing</NDHeading>
+      <NDParagraph>
         The editor writes an HTML string. Everything below renders that same
         string.
-      </DocsParagraph>
-      <DocsCard>
+      </NDParagraph>
+      <NDCard>
         <NDRichTextInput v-model="html" />
-      </DocsCard>
+      </NDCard>
 
-      <DocsHeading as="h2">Why this needs a utility</DocsHeading>
-      <DocsParagraph>
+      <NDHeading as="h2">Why this needs a utility</NDHeading>
+      <NDParagraph>
         Both panels render the identical string into a div. The only difference
         is one class on the wrapper. There is no template to add classes to the
         tags inside, because the editor made them at runtime.
-      </DocsParagraph>
+      </NDParagraph>
 
       <div class="grid gap-4 md:grid-cols-2">
-        <DocsCard>
+        <NDCard>
           <DocsSection as="div">
-            <DocsHeading as="h3">Plain v-html</DocsHeading>
+            <NDHeading as="h3">Plain v-html</NDHeading>
             <p class="font-mono text-xs text-brand-900/55">
               &lt;div v-html="html" /&gt;
             </p>
             <!-- eslint-disable-next-line vue/no-v-html -->
             <div class="text-sm" v-html="html" />
           </DocsSection>
-        </DocsCard>
+        </NDCard>
 
-        <DocsCard>
+        <NDCard>
           <DocsSection as="div">
-            <DocsHeading as="h3">NDRichText</DocsHeading>
+            <NDHeading as="h3">NDRichText</NDHeading>
             <p class="font-mono text-xs text-brand-900/55">
               &lt;div class="prose-content" v-html="html" /&gt;
             </p>
             <NDRichText :html="html" />
           </DocsSection>
-        </DocsCard>
+        </NDCard>
       </div>
 
-      <DocsParagraph>
+      <NDParagraph>
         One class on the wrapper, descendant rules underneath. The same
         prose-content utility styles the editor body too, so what you type
         matches what ships.
-      </DocsParagraph>
+      </NDParagraph>
     </DocsSection>
   </div>
 </template>

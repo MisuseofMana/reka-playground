@@ -36,22 +36,22 @@ function onStandaloneSubmit() {
     <DocsSection as="header">
       <DocsSourceLink />
       <h1 class="text-4xl font-bold text-brand-700">vee-validate</h1>
-      <DocsParagraph>
+      <NDParagraph>
         Proof that
         <strong>NDInput</strong> works with both <em>useForm</em> context and
         standalone <em>v-model</em> binding.
-      </DocsParagraph>
+      </NDParagraph>
     </DocsSection>
 
     <DocsSection>
-      <DocsHeading>Form 1 — useForm Context</DocsHeading>
-      <DocsParagraph>
+      <NDHeading>Form 1 — useForm Context</NDHeading>
+      <NDParagraph>
         Uses <em>useForm</em> with a <em>validationSchema</em>. Each
         <strong>NDInput</strong> connects automatically via
         <em>provide/inject</em>. Validation triggers on blur and blocks
         submission until all rules pass.
-      </DocsParagraph>
-      <DocsCard>
+      </NDParagraph>
+      <NDCard>
         <form class="flex flex-col gap-5" @submit="onFormSubmit">
           <NDInput validationName="firstName" label="First Name" has-asterisk />
           <NDInput validationName="lastName" label="Last Name" has-asterisk />
@@ -63,7 +63,7 @@ function onStandaloneSubmit() {
           />
           <NDSaveButton />
         </form>
-      </DocsCard>
+      </NDCard>
       <DocsLiveValues
         :entries="{
           firstname: values.firstName,
@@ -75,19 +75,19 @@ function onStandaloneSubmit() {
     </DocsSection>
 
     <DocsSection>
-      <DocsHeading>Form 2 — Standalone v-model</DocsHeading>
-      <DocsParagraph>
+      <NDHeading>Form 2 — Standalone v-model</NDHeading>
+      <NDParagraph>
         No <em>useForm</em>. Each <strong>NDInput</strong> is bound with
         <em>v-model</em> to a page-level <em>ref</em>. This proves
         <em>useField</em> works without a form context.
-      </DocsParagraph>
-      <DocsCard>
+      </NDParagraph>
+      <NDCard>
         <form class="flex flex-col gap-5" @submit.prevent="onStandaloneSubmit">
           <NDInput v-model="username" label="Username" has-asterisk />
           <NDInput v-model="bio" label="Bio" />
           <NDSaveButton />
         </form>
-      </DocsCard>
+      </NDCard>
       <DocsLiveValues :entries="{ username, bio }" />
       <DocsSubmitResult :result="standaloneResult" />
     </DocsSection>

@@ -1,7 +1,12 @@
 <script setup lang="ts">
-defineProps<{
-  entries: Record<string, unknown>;
-}>();
+const props = withDefaults(
+  defineProps<{
+    entries?: Record<string, string>;
+  }>(),
+  {
+    entries: () => ({ example: "value" }),
+  },
+);
 </script>
 
 <template>

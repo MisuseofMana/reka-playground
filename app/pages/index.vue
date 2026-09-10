@@ -70,10 +70,10 @@ groups.sort((a, b) =>
   <div class="flex w-full max-w-3xl flex-col gap-8 p-6">
     <header class="flex flex-col gap-2">
       <h1 class="text-4xl font-bold text-brand-700">Reka Playground</h1>
-      <DocsParagraph>
+      <NDParagraph>
         Experiments in component composition and styling strategy — Reka UI, CSS
         Modules, Tailwind, and CVA.
-      </DocsParagraph>
+      </NDParagraph>
       <p class="text-xs text-brand-900/50">
         This list is generated from the Nuxt router, so it always matches what
         is actually in <strong>app/pages/</strong>.

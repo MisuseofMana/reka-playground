@@ -10,13 +10,13 @@ const props = withDefaults(
     type?: string;
     label?: string;
     hasAsterisk?: boolean;
-    autocomplete?: string;
     modelValue?: string;
   }>(),
   {
     type: "text",
-    label: "",
-    autocomplete: "off",
+    label: "Label",
+    hasAsterisk: false,
+    modelValue: "",
   },
 );
 
@@ -62,7 +62,6 @@ const classes = computed(() =>
         :class="classes.control()"
         :name="validationName"
         :type="type"
-        :autocomplete="autocomplete"
         :aria-invalid="!!errorMessage"
         :aria-describedby="errorMessage ? errorId : undefined"
         @blur="handleBlur"

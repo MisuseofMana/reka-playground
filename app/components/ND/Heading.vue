@@ -9,6 +9,7 @@ withDefaults(
 
 <template>
   <component :is="as">
-    <slot />
+    <slot v-if="$slots.default"></slot>
+    <span v-else> New Dawn Heading </span>
   </component>
 </template>

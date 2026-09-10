@@ -16,15 +16,18 @@ defineSlots<{
 <template>
   <article :class="classes.root()">
     <header v-if="$slots.header" :class="classes.header()">
-      <slot name="header" />
+      <slot name="header"></slot>
     </header>
+    <header :class="classes.header()" v-else>New Dawn Card Header</header>
 
-    <div :class="classes.body()">
-      <slot />
+    <div v-if="$slots.default" :class="classes.body()">
+      <slot></slot>
     </div>
+    <div :class="classes.body()" v-else>New Dawn Card Body</div>
 
     <footer v-if="$slots.footer" :class="classes.footer()">
-      <slot name="footer" />
+      <slot name="footer"></slot>
     </footer>
+    <span v-else> New Dawn Card Footer </span>
   </article>
 </template>

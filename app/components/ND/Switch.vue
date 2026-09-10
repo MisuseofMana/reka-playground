@@ -3,9 +3,14 @@ import { SwitchRoot, SwitchThumb } from "reka-ui";
 import { useId } from "vue";
 import { switchRecipe } from "./Switch.recipe";
 
-defineProps<{
-  label?: string;
-}>();
+withDefaults(
+  defineProps<{
+    label?: string;
+  }>(),
+  {
+    label: "Label",
+  },
+);
 
 const checked = defineModel<boolean>({ default: false });
 const inputId = useId();

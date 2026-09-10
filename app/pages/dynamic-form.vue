@@ -26,21 +26,21 @@ const onSubmit = handleSubmit((vals) => {
   <div class="flex w-full max-w-3xl flex-col gap-10 p-6">
     <DocsSection as="header">
       <DocsSourceLink />
-      <DocsHeading as="h1">Dynamic Form</DocsHeading>
-      <DocsParagraph>
+      <NDHeading as="h1">Dynamic Form</NDHeading>
+      <NDParagraph>
         A switch that conditionally reveals a validated input field.
-      </DocsParagraph>
+      </NDParagraph>
     </DocsSection>
 
     <DocsSection as="main">
-      <DocsHeading as="h2"> Switch on an optional field </DocsHeading>
-      <DocsParagraph>
+      <NDHeading as="h2"> Switch on an optional field </NDHeading>
+      <NDParagraph>
         The <strong>NDSwitch</strong> uses <em>v-model</em> to control
         visibility. The <strong>NDInput</strong> connects to
         <em>useForm</em> via <em>provide/inject</em> — validation only applies
         when the field is visible.
-      </DocsParagraph>
-      <DocsCard>
+      </NDParagraph>
+      <NDCard>
         <form class="flex flex-col gap-5" @submit="onSubmit">
           <NDSwitch v-model="showNickname" label="Add a nickname?" />
 
@@ -52,7 +52,7 @@ const onSubmit = handleSubmit((vals) => {
           />
           <NDSaveButton />
         </form>
-      </DocsCard>
+      </NDCard>
       <DocsLiveValues
         :entries="{
           showNickname,

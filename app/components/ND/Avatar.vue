@@ -4,10 +4,13 @@ import { avatarRecipe } from "./Avatar.recipe";
 
 const props = withDefaults(
   defineProps<{
-    name: string;
+    name?: string;
     src?: string;
   }>(),
-  { src: undefined },
+  {
+    name: "Sean Yager",
+    src: undefined,
+  },
 );
 
 const classes = avatarRecipe();

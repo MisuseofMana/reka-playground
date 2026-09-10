@@ -15,9 +15,9 @@ const props = withDefaults(
     disabled?: boolean;
   }>(),
   {
-    looksLike: undefined,
-    size: undefined,
-    fullWidth: undefined,
+    looksLike: "primary",
+    size: "md",
+    fullWidth: false,
     type: "button",
     disabled: false,
   },
@@ -38,6 +38,7 @@ defineSlots<{
 
 <template>
   <button :class="classes" :type="type" :disabled="disabled">
-    <slot />
+    <slot v-if="$slots.default"></slot>
+    <span v-else> New Dawn Button </span>
   </button>
 </template>

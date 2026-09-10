@@ -11,27 +11,27 @@ const badge =
   <div class="flex w-full max-w-3xl flex-col gap-10 p-6">
     <DocsSection as="header">
       <DocsSourceLink />
-      <DocsHeading as="h1">Slots</DocsHeading>
-      <DocsParagraph>
+      <NDHeading as="h1">Slots</NDHeading>
+      <NDParagraph>
         <strong>NDCard</strong> provides three content areas: a header, a body,
         and a footer. The card owns the layout — the caller owns the content.
-      </DocsParagraph>
+      </NDParagraph>
     </DocsSection>
 
     <DocsSection>
-      <DocsHeading>Body only</DocsHeading>
-      <DocsParagraph>
+      <NDHeading>Body only</NDHeading>
+      <NDParagraph>
         Content between the tags becomes the body. No slots needed.
-      </DocsParagraph>
+      </NDParagraph>
       <NDCard>A card with nothing but body content.</NDCard>
     </DocsSection>
 
     <DocsSection>
-      <DocsHeading>Header + body</DocsHeading>
-      <DocsParagraph>
+      <NDHeading>Header + body</NDHeading>
+      <NDParagraph>
         The header is a flex row with <em>space-between</em>, so two children
         split to opposite ends automatically.
-      </DocsParagraph>
+      </NDParagraph>
       <NDCard>
         <template #header>
           <span :class="heading">Weekly digest</span>
@@ -42,11 +42,11 @@ const badge =
     </DocsSection>
 
     <DocsSection>
-      <DocsHeading>Body + footer</DocsHeading>
-      <DocsParagraph>
+      <NDHeading>Body + footer</NDHeading>
+      <NDParagraph>
         The footer right-aligns and spaces its children — ready for action
         buttons.
-      </DocsParagraph>
+      </NDParagraph>
       <NDCard>
         Footer buttons are right-aligned for you.
         <template #footer>
@@ -57,7 +57,7 @@ const badge =
     </DocsSection>
 
     <DocsSection>
-      <DocsHeading>All three</DocsHeading>
+      <NDHeading>All three</NDHeading>
       <NDCard>
         <template #header>
           <span :class="heading">Deploy to production</span>
@@ -72,11 +72,11 @@ const badge =
     </DocsSection>
 
     <DocsSection>
-      <DocsHeading>Unfilled slots leave no trace</DocsHeading>
-      <DocsParagraph>
+      <NDHeading>Unfilled slots leave no trace</NDHeading>
+      <NDParagraph>
         If you skip the header or footer, the element isn't rendered at all — no
         empty wrapper, no extra gap.
-      </DocsParagraph>
+      </NDParagraph>
       <NDCard>
         <template #header>
           <span :class="heading">Has a header</span>
@@ -91,13 +91,13 @@ const badge =
     </DocsSection>
 
     <DocsSection>
-      <DocsHeading>Composing on top of slots</DocsHeading>
-      <DocsParagraph>
+      <NDHeading>Composing on top of slots</NDHeading>
+      <NDParagraph>
         <strong>NDUserCard</strong> wraps <strong>NDCard</strong> — it fills the
         header with an identity block and re-exposes the footer as an
         <em>#actions</em> slot. The scoped slot hands back the user object so
         the caller can reference it.
-      </DocsParagraph>
+      </NDParagraph>
       <NDUserCard name="Ada Lovelace" role="Analytical Engine, Note G">
         Wrote the first algorithm intended to be carried out by a machine.
 
@@ -111,7 +111,7 @@ const badge =
     </DocsSection>
 
     <DocsSection>
-      <DocsHeading>Slot reference</DocsHeading>
+      <NDHeading>Slot reference</NDHeading>
       <div class="overflow-x-auto rounded-2xl border border-brand-200">
         <table class="w-full border-collapse text-left text-sm">
           <thead class="bg-brand-100/70 text-brand-800">

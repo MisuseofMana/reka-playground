@@ -8,6 +8,9 @@ export default defineNuxtConfig({
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
   },
   modules: ['@compodium/nuxt'],
+  compodium: {
+    ignore: ['Docs/**'],
+  },
   css: ['~/assets/css/main.css'],
   // Nuxt scans pages/ for every extension in `extensions`, not just .vue, so
   // a colocated `*.data.ts` would register as a broken route. Skip those.
