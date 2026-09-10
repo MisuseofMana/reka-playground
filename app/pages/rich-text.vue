@@ -32,20 +32,20 @@ const html = ref(`
 
     <DocsSection as="main">
       <DocsHeading as="h2">Editing</DocsHeading>
-      <DocsNote>
+      <DocsParagraph>
         The editor writes an HTML string. Everything below renders that same
         string.
-      </DocsNote>
+      </DocsParagraph>
       <DocsCard>
         <NDRichTextInput v-model="html" />
       </DocsCard>
 
       <DocsHeading as="h2">Why this needs a utility</DocsHeading>
-      <DocsNote>
-        Both panels render the identical string into a div. The only difference is
-        one class on the wrapper. There is no template to add classes to the tags
-        inside, because the editor made them at runtime.
-      </DocsNote>
+      <DocsParagraph>
+        Both panels render the identical string into a div. The only difference
+        is one class on the wrapper. There is no template to add classes to the
+        tags inside, because the editor made them at runtime.
+      </DocsParagraph>
 
       <div class="grid gap-4 md:grid-cols-2">
         <DocsCard>
@@ -70,11 +70,11 @@ const html = ref(`
         </DocsCard>
       </div>
 
-      <DocsNote>
+      <DocsParagraph>
         One class on the wrapper, descendant rules underneath. The same
         prose-content utility styles the editor body too, so what you type
         matches what ships.
-      </DocsNote>
+      </DocsParagraph>
     </DocsSection>
   </div>
 </template>

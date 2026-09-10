@@ -93,12 +93,12 @@ const api: { prop: string; type: string; default: string; notes: string }[] = [
 
     <DocsSection>
       <DocsHeading>1 · The recipe</DocsHeading>
-      <DocsNote>
+      <DocsParagraph>
         One <strong>tv()</strong> call describes the whole button: a
         <em>base</em> every instance gets, one entry per
         <em>variants</em> axis, the combinations that behave differently,
         and the values assumed when a prop is left off.
-      </DocsNote>
+      </DocsParagraph>
       <DocsInfoBox>
         Each property family has exactly one owner —
         <em>size</em> alone sets padding, <em>looksLike</em> alone sets
@@ -109,11 +109,11 @@ const api: { prop: string; type: string; default: string; notes: string }[] = [
 
     <DocsSection>
       <DocsHeading>2 · Variant props</DocsHeading>
-      <DocsNote>
+      <DocsParagraph>
         Each axis in <em>variants</em> becomes a prop. Leave one off and
         <em>defaultVariants</em> fills it in, which is why the first example
         is a styled button with no props at all.
-      </DocsNote>
+      </DocsParagraph>
       <DocsDemo
         v-for="item in variantExamples"
         :key="item.label"
@@ -124,13 +124,13 @@ const api: { prop: string; type: string; default: string; notes: string }[] = [
 
     <DocsSection>
       <DocsHeading>3 · Compound variants</DocsHeading>
-      <DocsNote>
+      <DocsParagraph>
         This is the <strong>tv()</strong> feature a lookup map cannot reproduce:
         rules that fire only on a <em>combination</em> of inputs. A large
         primary gets a shadow; a large <em>danger</em> or
         <em>success</em> gets uppercased. At <em>md</em> none of it
         applies, and no single axis is touched.
-      </DocsNote>
+      </DocsParagraph>
       <DocsDemo
         v-for="item in compoundExamples"
         :key="item.label"
@@ -138,28 +138,28 @@ const api: { prop: string; type: string; default: string; notes: string }[] = [
         <NDButton v-bind="item.props">{{ item.label }}</NDButton>
         <span :class="badge">adds {{ item.adds }}</span>
       </DocsDemo>
-      <DocsNote>
+      <DocsParagraph>
         The array form matches any listed value, so
         <em>looksLike: ["danger", "success"]</em> is one entry covering both
         rather than two near-identical ones.
-      </DocsNote>
-      <DocsNote>
+      </DocsParagraph>
+      <DocsParagraph>
         This could improve the DX of our component variance management. We've
         discussed this in the Dev Days recently. "How do we maintain a component
         that has slight visual differences in different places?"
         <strong>tailwind-variants</strong> lets us define those variations elegantly
         through Tailwind utilities and custom style configurations.
-      </DocsNote>
+      </DocsParagraph>
     </DocsSection>
 
     <DocsSection>
       <DocsHeading>4 · The recipe is just a function</DocsHeading>
-      <DocsNote>
+      <DocsParagraph>
         Because <strong>buttonRecipe()</strong> lives in
         <strong>ND/Button.recipe.ts</strong> — beside the component rather than
         inside it — it can dress markup the component does not own: an anchor, a
         Reka <em>asChild</em> trigger, or any other element.
-      </DocsNote>
+      </DocsParagraph>
       <DocsDemo>
         <a href="#" :class="buttonRecipe({ looksLike: 'secondary' })">
           An anchor, same recipe
