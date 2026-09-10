@@ -3,15 +3,20 @@ import { ref } from "vue";
 
 useHead({ title: "Rich Text" });
 
-const html = ref(
-  [
-    "<h2>Course overview</h2>",
-    "<p>This block was typed in the editor above. No template exists for it.</p>",
-    "<ul><li>Preflight removes list markers</li><li>and link colour</li><li>and block margins</li></ul>",
-    "<p>Editor copy needs all three back, but only here. See the <a href=\"https://reka-ui.com\">Reka docs</a>.</p>",
-    "<blockquote>The markup arrives as a string at runtime.</blockquote>",
-  ].join(""),
-);
+const html = ref(`
+  <h2>Course overview</h2>
+  <p>This block was typed in the editor above. No template exists for it.</p>
+  <ul>
+    <li>Preflight removes list markers</li>
+    <li>and link colour</li>
+    <li>and block margins</li>
+  </ul>
+  <p>
+    Editor copy needs all three back, but only here. See the
+    <a href="https://reka-ui.com">Reka docs</a>.
+  </p>
+  <blockquote>The markup arrives as a string at runtime.</blockquote>
+`);
 </script>
 
 <template>
