@@ -49,16 +49,16 @@ export const buttonRecipe = tv({
     // Lives in the `focus-visible:` scope, so it never competes with ghost's
     // resting `ring-1` — different modifier, different selector, and
     // `:focus-visible` outranks it on focus regardless of source order.
-    "focus-visible:ring-3 focus-visible:ring-violet-200",
+    "focus-visible:ring-3 focus-visible:ring-brand-200",
     "disabled:opacity-50 disabled:pointer-events-none",
   ],
 
   variants: {
     looksLike: {
-      primary: "bg-violet-600 text-white",
+      primary: "bg-brand-600 text-white",
       secondary: "bg-slate-200 text-slate-700",
       ghost:
-        "bg-transparent text-violet-700 ring-1 ring-inset ring-violet-300 hover:bg-violet-50",
+        "bg-transparent text-brand-700 ring-1 ring-inset ring-brand-300 hover:bg-brand-50",
       success: "bg-emerald-500 text-emerald-50",
       danger: "bg-rose-500 text-white",
     } satisfies Record<NDButtonLooksLike, string>,
@@ -89,7 +89,7 @@ export const buttonRecipe = tv({
     {
       looksLike: "primary",
       size: "lg",
-      class: "shadow-lg shadow-violet-600/30",
+      class: "shadow-lg shadow-brand-600/30",
     },
     // Arrays match any listed value — one entry covers both loud looks.
     {

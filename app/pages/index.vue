@@ -69,14 +69,14 @@ groups.sort((a, b) =>
 <template>
   <div class="flex w-full max-w-3xl flex-col gap-8 p-6">
     <header class="flex flex-col gap-2">
-      <h1 class="text-4xl font-bold text-violet-700">Reka Playground</h1>
-      <p class="text-lg text-violet-900/80">
+      <h1 class="text-4xl font-bold text-brand-700">Reka Playground</h1>
+      <DocsParagraph>
         Experiments in component composition and styling strategy — Reka UI, CSS
         Modules, Tailwind, and CVA.
-      </p>
-      <p class="text-xs text-violet-900/50">
+      </DocsParagraph>
+      <p class="text-xs text-brand-900/50">
         This list is generated from the Nuxt router, so it always matches what
-        is actually in <code class="font-mono">app/pages/</code>.
+        is actually in <strong>app/pages/</strong>.
       </p>
     </header>
 
@@ -86,7 +86,7 @@ groups.sort((a, b) =>
       class="flex flex-col gap-3"
     >
       <h2
-        class="text-base font-semibold tracking-wide text-violet-700 uppercase"
+        class="text-base font-semibold tracking-wide text-brand-700 uppercase"
       >
         {{ group.name }}
       </h2>
@@ -95,11 +95,11 @@ groups.sort((a, b) =>
         <li v-for="entry in group.entries" :key="entry.path">
           <NuxtLink
             :to="entry.path"
-            class="group flex items-baseline justify-between gap-4 rounded-xl border border-violet-200 bg-white px-4 py-3 transition-colors hover:border-violet-400 hover:bg-violet-50"
+            class="group flex items-baseline justify-between gap-4 rounded-xl border border-brand-200 bg-white px-4 py-3 transition-colors hover:border-brand-400 hover:bg-brand-50"
           >
-            <span class="font-semibold text-violet-800">{{ entry.title }}</span>
+            <span class="font-semibold text-brand-800">{{ entry.title }}</span>
             <span
-              class="font-mono text-xs text-violet-900/45 group-hover:text-violet-700"
+              class="font-mono text-xs text-brand-900/45 group-hover:text-brand-700"
             >
               {{ entry.path }}
             </span>
@@ -108,7 +108,7 @@ groups.sort((a, b) =>
       </ul>
     </section>
 
-    <p v-if="!groups.length" class="text-sm text-violet-900/70">
+    <p v-if="!groups.length" class="text-sm text-brand-900/70">
       No pages found besides this one.
     </p>
   </div>

@@ -7,16 +7,8 @@ import {
 
 useHead({ title: "Tailwind Variants" });
 
-const section = "flex flex-col gap-3";
-const sectionTitle = "text-base font-semibold tracking-wide text-violet-700";
-const note =
-  "text-sm leading-relaxed text-violet-900/70 [&_code]:rounded-md [&_code]:bg-violet-100 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.8125rem] [&_code]:text-violet-700";
-const infoBox =
-  "rounded-xl border border-sky-200 border-l-4 border-l-sky-500 bg-sky-50 px-4 py-3 text-sm leading-relaxed text-sky-950 before:mb-1 before:block before:text-xs before:font-semibold before:uppercase before:tracking-wide before:text-sky-700 before:content-['Note'] [&_code]:rounded-md [&_code]:bg-sky-100 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.8125rem] [&_code]:text-sky-800";
-const demo =
-  "flex flex-wrap items-center gap-3 rounded-2xl border border-violet-200 bg-white px-5 py-6";
 const badge =
-  "rounded-full bg-violet-100 px-2 py-0.5 font-mono text-[0.6875rem] text-violet-700";
+  "rounded-full bg-brand-100 px-2 py-0.5 font-mono text-[0.6875rem] text-brand-700";
 
 type ButtonProps = {
   looksLike?: NDButtonLooksLike;
@@ -40,7 +32,7 @@ const compoundExamples: {
   {
     label: "Primary + Large",
     props: { looksLike: "primary", size: "lg" },
-    adds: "shadow-lg shadow-violet-600/30",
+    adds: "shadow-lg shadow-brand-600/30",
   },
   {
     label: "Success + Large",
@@ -90,104 +82,96 @@ const api: { prop: string; type: string; default: string; notes: string }[] = [
 
 <template>
   <div class="flex w-full max-w-3xl flex-col gap-10 p-6">
-    <header :class="section">
-      <a
-        href="https://github.com/MisuseofMana/reka-playground/blob/main/app/pages/tailwind-variants.vue"
-        target="_blank"
-        class="self-start rounded-lg bg-violet-100 px-2.5 py-1 font-mono text-xs text-violet-600 transition hover:bg-violet-200"
-      >
-        View source on GitHub &nearr;
-      </a>
-      <h1 class="text-4xl font-bold text-violet-700">Tailwind Variants</h1>
-      <p class="text-lg text-violet-900/80">
-        <code class="font-mono">tv()</code> organizes styles into a recipe file
+    <DocsSection as="header">
+      <DocsSourceLink />
+      <h1 class="text-4xl font-bold text-brand-700">Tailwind Variants</h1>
+      <DocsParagraph>
+        <strong>tv()</strong> organizes styles into a recipe file
         rather than many inlined classes and logical conditionals.
-      </p>
-    </header>
+      </DocsParagraph>
+    </DocsSection>
 
-    <section :class="section">
-      <h2 :class="sectionTitle">1 · The recipe</h2>
-      <p :class="note">
-        One <code>tv()</code> call describes the whole button: a
-        <code>base</code> every instance gets, one entry per
-        <code>variants</code> axis, the combinations that behave differently,
+    <DocsSection>
+      <DocsHeading>1 · The recipe</DocsHeading>
+      <DocsNote>
+        One <strong>tv()</strong> call describes the whole button: a
+        <em>base</em> every instance gets, one entry per
+        <em>variants</em> axis, the combinations that behave differently,
         and the values assumed when a prop is left off.
-      </p>
-      <p :class="infoBox">
+      </DocsNote>
+      <DocsInfoBox>
         Each property family has exactly one owner —
-        <code>size</code> alone sets padding, <code>looksLike</code> alone sets
+        <em>size</em> alone sets padding, <em>looksLike</em> alone sets
         background — so two variants can never emit competing utilities in the
         first place.
-      </p>
-    </section>
+      </DocsInfoBox>
+    </DocsSection>
 
-    <section :class="section">
-      <h2 :class="sectionTitle">2 · Variant props</h2>
-      <p :class="note">
-        Each axis in <code>variants</code> becomes a prop. Leave one off and
-        <code>defaultVariants</code> fills it in, which is why the first example
+    <DocsSection>
+      <DocsHeading>2 · Variant props</DocsHeading>
+      <DocsNote>
+        Each axis in <em>variants</em> becomes a prop. Leave one off and
+        <em>defaultVariants</em> fills it in, which is why the first example
         is a styled button with no props at all.
-      </p>
-      <div
+      </DocsNote>
+      <DocsDemo
         v-for="item in variantExamples"
         :key="item.label"
-        :class="demo"
       >
         <NDButton v-bind="item.props">{{ item.label }}</NDButton>
-      </div>
-    </section>
+      </DocsDemo>
+    </DocsSection>
 
-    <section :class="section">
-      <h2 :class="sectionTitle">3 · Compound variants</h2>
-      <p :class="note">
-        This is the <code>tv()</code> feature a lookup map cannot reproduce:
+    <DocsSection>
+      <DocsHeading>3 · Compound variants</DocsHeading>
+      <DocsNote>
+        This is the <strong>tv()</strong> feature a lookup map cannot reproduce:
         rules that fire only on a <em>combination</em> of inputs. A large
-        primary gets a shadow; a large <code>danger</code> or
-        <code>success</code> gets uppercased. At <code>md</code> none of it
+        primary gets a shadow; a large <em>danger</em> or
+        <em>success</em> gets uppercased. At <em>md</em> none of it
         applies, and no single axis is touched.
-      </p>
-      <div
+      </DocsNote>
+      <DocsDemo
         v-for="item in compoundExamples"
         :key="item.label"
-        :class="demo"
       >
         <NDButton v-bind="item.props">{{ item.label }}</NDButton>
         <span :class="badge">adds {{ item.adds }}</span>
-      </div>
-      <p :class="note">
+      </DocsDemo>
+      <DocsNote>
         The array form matches any listed value, so
-        <code>looksLike: ["danger", "success"]</code> is one entry covering both
+        <em>looksLike: ["danger", "success"]</em> is one entry covering both
         rather than two near-identical ones.
-      </p>
-      <p :class="note">
+      </DocsNote>
+      <DocsNote>
         This could improve the DX of our component variance management. We've
         discussed this in the Dev Days recently. "How do we maintain a component
         that has slight visual differences in different places?"
-        <code>tailwind-variants</code> lets us define those variations elegantly
+        <strong>tailwind-variants</strong> lets us define those variations elegantly
         through Tailwind utilities and custom style configurations.
-      </p>
-    </section>
+      </DocsNote>
+    </DocsSection>
 
-    <section :class="section">
-      <h2 :class="sectionTitle">4 · The recipe is just a function</h2>
-      <p :class="note">
-        Because <code>buttonRecipe()</code> lives in
-        <code>ND/Button.recipe.ts</code> — beside the component rather than
+    <DocsSection>
+      <DocsHeading>4 · The recipe is just a function</DocsHeading>
+      <DocsNote>
+        Because <strong>buttonRecipe()</strong> lives in
+        <strong>ND/Button.recipe.ts</strong> — beside the component rather than
         inside it — it can dress markup the component does not own: an anchor, a
-        Reka <code>asChild</code> trigger, or any other element.
-      </p>
-      <div :class="demo">
+        Reka <em>asChild</em> trigger, or any other element.
+      </DocsNote>
+      <DocsDemo>
         <a href="#" :class="buttonRecipe({ looksLike: 'secondary' })">
           An anchor, same recipe
         </a>
-      </div>
-    </section>
+      </DocsDemo>
+    </DocsSection>
 
-    <section :class="section">
-      <h2 :class="sectionTitle">5 · Props</h2>
-      <div class="overflow-x-auto rounded-2xl border border-violet-200">
+    <DocsSection>
+      <DocsHeading>5 · Props</DocsHeading>
+      <div class="overflow-x-auto rounded-2xl border border-brand-200">
         <table class="w-full border-collapse text-left text-sm">
-          <thead class="bg-violet-100/70 text-violet-800">
+          <thead class="bg-brand-100/70 text-brand-800">
             <tr>
               <th class="px-4 py-2 font-semibold">Prop</th>
               <th class="px-4 py-2 font-semibold">Type</th>
@@ -198,26 +182,26 @@ const api: { prop: string; type: string; default: string; notes: string }[] = [
             <tr
               v-for="row in api"
               :key="row.prop"
-              class="border-t border-violet-100 align-top"
+              class="border-t border-brand-100 align-top"
             >
-              <td class="px-4 py-3 font-mono text-[0.8125rem] text-violet-700">
+              <td class="px-4 py-3 font-mono text-[0.8125rem] text-brand-700">
                 {{ row.prop }}
               </td>
               <td class="px-4 py-3">
-                <span class="font-mono text-[0.8125rem] text-violet-900/75">
+                <span class="font-mono text-[0.8125rem] text-brand-900/75">
                   {{ row.type }}
                 </span>
-                <span class="mt-1 block text-xs text-violet-900/55">
+                <span class="mt-1 block text-xs text-brand-900/55">
                   {{ row.notes }}
                 </span>
               </td>
-              <td class="px-4 py-3 font-mono text-[0.8125rem] text-violet-900/75">
+              <td class="px-4 py-3 font-mono text-[0.8125rem] text-brand-900/75">
                 {{ row.default }}
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-    </section>
+    </DocsSection>
   </div>
 </template>

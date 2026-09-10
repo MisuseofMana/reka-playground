@@ -44,8 +44,8 @@ const links = router
       class="shrink-0 rounded-lg px-2.5 py-1 text-xs font-semibold tracking-wide transition-colors"
       :class="
         route.path === '/'
-          ? 'bg-violet-600 text-white'
-          : 'text-violet-600 hover:bg-violet-100'
+          ? 'bg-brand-600 text-white'
+          : 'text-brand-600 hover:bg-brand-100'
       "
     >
       Home
@@ -57,8 +57,8 @@ const links = router
       class="shrink-0 rounded-lg px-2.5 py-1 text-xs font-semibold tracking-wide transition-colors"
       :class="
         route.path === link.path
-          ? 'bg-violet-600 text-white'
-          : 'text-violet-600 hover:bg-violet-100'
+          ? 'bg-brand-600 text-white'
+          : 'text-brand-600 hover:bg-brand-100'
       "
     >
       {{ link.title }}
