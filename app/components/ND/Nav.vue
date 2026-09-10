@@ -18,6 +18,8 @@ function titleize(slug: string) {
   );
 }
 
+const isDev = import.meta.dev;
+
 const links = router
   .getRoutes()
   .filter(
@@ -63,7 +65,7 @@ const links = router
     >
       {{ link.title }}
     </NuxtLink>
-    <div class="ml-auto border-l border-brand-200 pl-3">
+    <div v-if="isDev" class="ml-auto border-l border-brand-200 pl-3">
       <a
         href="/__compodium__/devtools/components"
         class="shrink-0 rounded-lg border border-dashed border-brand-300 px-2.5 py-1 text-xs font-semibold tracking-wide text-brand-400 transition-colors hover:border-brand-400 hover:text-brand-600"
