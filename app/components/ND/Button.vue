@@ -38,7 +38,6 @@ defineSlots<{
 
 <template>
   <button :class="classes" :type="type" :disabled="disabled">
-    <slot v-if="$slots.default"></slot>
-    <span v-else> New Dawn Button </span>
+    <slot />
   </button>
 </template>

@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   },
   modules: ['@compodium/nuxt'],
   compodium: {
-    ignore: ['Docs/**'],
+    ignore: ['Docs/**', 'UN/**'],
   },
   css: ['~/assets/css/main.css'],
   // Nuxt scans pages/ for every extension in `extensions`, not just .vue, so
