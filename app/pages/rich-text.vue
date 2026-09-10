@@ -42,21 +42,31 @@ const html = ref(`
 
       <DocsHeading as="h2">Why this needs a utility</DocsHeading>
       <DocsNote>
-        Both panels render the identical string. The left one has no class on
-        the wrapper. There is no template to add one to the tags inside, because
-        the editor made them at runtime.
+        Both panels render the identical string into a div. The only difference is
+        one class on the wrapper. There is no template to add classes to the tags
+        inside, because the editor made them at runtime.
       </DocsNote>
 
       <div class="grid gap-4 md:grid-cols-2">
         <DocsCard>
-          <DocsHeading as="h3">Plain v-html</DocsHeading>
-          <!-- eslint-disable-next-line vue/no-v-html -->
-          <div class="text-sm" v-html="html" />
+          <DocsSection as="div">
+            <DocsHeading as="h3">Plain v-html</DocsHeading>
+            <p class="font-mono text-xs text-brand-900/55">
+              &lt;div v-html="html" /&gt;
+            </p>
+            <!-- eslint-disable-next-line vue/no-v-html -->
+            <div class="text-sm" v-html="html" />
+          </DocsSection>
         </DocsCard>
 
         <DocsCard>
-          <DocsHeading as="h3">NDRichText</DocsHeading>
-          <NDRichText :html="html" />
+          <DocsSection as="div">
+            <DocsHeading as="h3">NDRichText</DocsHeading>
+            <p class="font-mono text-xs text-brand-900/55">
+              &lt;div class="prose-content" v-html="html" /&gt;
+            </p>
+            <NDRichText :html="html" />
+          </DocsSection>
         </DocsCard>
       </div>
 
