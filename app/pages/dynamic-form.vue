@@ -50,7 +50,7 @@ const onSubmit = handleSubmit((vals) => {
             label="Nickname"
             has-asterisk
           />
-          <NDSaveButton />
+          <UNSaveButton />
         </form>
       </NDCard>
       <DocsLiveValues

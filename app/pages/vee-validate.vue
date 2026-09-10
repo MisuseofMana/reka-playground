@@ -61,7 +61,7 @@ function onStandaloneSubmit() {
             type="email"
             has-asterisk
           />
-          <NDSaveButton />
+          <UNSaveButton />
         </form>
       </NDCard>
       <DocsLiveValues
@@ -85,7 +85,7 @@ function onStandaloneSubmit() {
         <form class="flex flex-col gap-5" @submit.prevent="onStandaloneSubmit">
           <NDInput v-model="username" label="Username" has-asterisk />
           <NDInput v-model="bio" label="Bio" />
-          <NDSaveButton />
+          <UNSaveButton />
         </form>
       </NDCard>
       <DocsLiveValues :entries="{ username, bio }" />

@@ -93,12 +93,12 @@ const badge =
     <DocsSection>
       <NDHeading>Composing on top of slots</NDHeading>
       <NDParagraph>
-        <strong>NDUserCard</strong> wraps <strong>NDCard</strong> — it fills the
+        <strong>UNUserCard</strong> wraps <strong>NDCard</strong> — it fills the
         header with an identity block and re-exposes the footer as an
         <em>#actions</em> slot. The scoped slot hands back the user object so
         the caller can reference it.
       </NDParagraph>
-      <NDUserCard name="Ada Lovelace" role="Analytical Engine, Note G">
+      <UNUserCard name="Ada Lovelace" role="Analytical Engine, Note G">
         Wrote the first algorithm intended to be carried out by a machine.
 
         <template #actions="{ user }">
@@ -107,7 +107,7 @@ const badge =
           </NDButton>
           <NDButton size="sm">Follow</NDButton>
         </template>
-      </NDUserCard>
+      </UNUserCard>
     </DocsSection>
 
     <DocsSection>
