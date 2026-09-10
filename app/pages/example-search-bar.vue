@@ -54,7 +54,7 @@ const filteredItems = computed(() => {
         filter.
       </DocsParagraph>
       <form @submit.prevent="applyFilter">
-        <NDInput v-model="searchTerm" name="search" label="Search frameworks">
+        <NDInput v-model="searchTerm" validationName="search" label="Search frameworks">
           <template #trailing>
             <button
               type="submit"

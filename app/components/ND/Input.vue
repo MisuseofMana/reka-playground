@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { Label } from "reka-ui";
 import { useField } from "vee-validate";
-import { computed, useId } from "vue";
+import { computed, ref, useId } from "vue";
 import { formInputRecipe } from "./Input.recipe";
 
 const props = withDefaults(
   defineProps<{
-    name: string;
+    validationName?: string;
     type?: string;
     label?: string;
     hasAsterisk?: boolean;
@@ -20,6 +20,8 @@ const props = withDefaults(
   },
 );
 
+const emit = defineEmits<{ "update:modelValue": [value: string] }>();
+
 const inputId = useId();
 const errorId = computed(() => `${inputId}-error`);
 
@@ -27,11 +29,21 @@ const formattedLabel = computed(() => {
   return props.label + (props.hasAsterisk ? "*" : "");
 });
 
-const { value, errorMessage, handleBlur } = useField<string>(
-  () => props.name,
-  undefined,
-  { syncVModel: true },
-);
+const field = props.validationName
+  ? useField<string>(() => props.validationName!, undefined, {
+      syncVModel: true,
+    })
+  : null;
+
+const value = field
+  ? field.value
+  : computed({
+      get: () => props.modelValue ?? "",
+      set: (v) => emit("update:modelValue", v),
+    });
+
+const errorMessage = field ? field.errorMessage : ref<string | undefined>();
+const handleBlur = field ? field.handleBlur : () => {};
 
 const classes = computed(() =>
   formInputRecipe({ invalid: !!errorMessage.value }),
@@ -48,7 +60,7 @@ const classes = computed(() =>
         :id="inputId"
         v-model="value"
         :class="classes.control()"
-        :name="name"
+        :name="validationName"
         :type="type"
         :autocomplete="autocomplete"
         :aria-invalid="!!errorMessage"
@@ -57,12 +69,7 @@ const classes = computed(() =>
       />
       <slot name="trailing" />
     </div>
-    <p
-      v-if="errorMessage"
-      :id="errorId"
-      :class="classes.error()"
-      role="alert"
-    >
+    <p v-if="errorMessage" :id="errorId" :class="classes.error()" role="alert">
       {{ errorMessage }}
     </p>
   </div>

@@ -4,7 +4,7 @@ import { ref } from "vue";
 
 useHead({ title: "vee-validate" });
 
-const { handleSubmit } = useForm({
+const { handleSubmit, values } = useForm({
   validationSchema: {
     firstName: "required",
     lastName: "required",
@@ -53,12 +53,24 @@ function onStandaloneSubmit() {
       </DocsParagraph>
       <DocsCard>
         <form class="flex flex-col gap-5" @submit="onFormSubmit">
-          <NDInput name="firstName" label="First Name" has-asterisk />
-          <NDInput name="lastName" label="Last Name" has-asterisk />
-          <NDInput name="email" label="Email" type="email" has-asterisk />
+          <NDInput validationName="firstName" label="First Name" has-asterisk />
+          <NDInput validationName="lastName" label="Last Name" has-asterisk />
+          <NDInput
+            validationName="email"
+            label="Email"
+            type="email"
+            has-asterisk
+          />
           <NDSaveButton />
         </form>
       </DocsCard>
+      <DocsLiveValues
+        :entries="{
+          firstname: values.firstName,
+          lastname: values.lastName,
+          email: values.email,
+        }"
+      />
       <DocsSubmitResult :result="formResult" />
     </DocsSection>
 
@@ -71,13 +83,8 @@ function onStandaloneSubmit() {
       </DocsParagraph>
       <DocsCard>
         <form class="flex flex-col gap-5" @submit.prevent="onStandaloneSubmit">
-          <NDInput
-            v-model="username"
-            name="username"
-            label="Username"
-            has-asterisk
-          />
-          <NDInput v-model="bio" name="bio" label="Bio" />
+          <NDInput v-model="username" label="Username" has-asterisk />
+          <NDInput v-model="bio" label="Bio" />
           <NDSaveButton />
         </form>
       </DocsCard>

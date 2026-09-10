@@ -46,7 +46,7 @@ const onSubmit = handleSubmit((vals) => {
 
           <NDInput
             v-if="showNickname"
-            name="nickname"
+            validationName="nickname"
             label="Nickname"
             has-asterisk
           />
