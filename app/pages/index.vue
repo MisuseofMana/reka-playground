@@ -3,9 +3,6 @@ const router = useRouter();
 
 useHead({ title: "Reka Playground" });
 
-/* Slugs whose automatic Title Case would come out wrong — acronyms, mostly.
-   Anything not listed falls through to `titleize` below, so a new page needs an
-   entry here only if its name has unusual casing. */
 const TITLES: Record<string, string> = {
   "css-modules": "CSS Modules",
   "class-variance-authority": "Class Variance Authority (CVA)",
@@ -23,22 +20,13 @@ function titleize(slug: string) {
 
 type Entry = { path: string; title: string; group: string };
 
-/* Read from the router instead of a hand-kept array: dropping a file into
-   pages/ puts it on this index with no second edit, and deleting one cannot
-   leave a dead link behind. Routes are static after build, so this needs no
-   reactivity. */
 const entries: Entry[] = router
   .getRoutes()
   .filter(
     (route) =>
-      // This page itself.
       route.path !== "/" &&
-      // Dynamic and catch-all routes: not destinations you can link to.
       !route.path.includes(":") &&
       !route.path.includes("*") &&
-      // Routes injected by modules rather than files in pages/. Compodium
-      // registers /__compodium__/renderer, and Nuxt reserves the `__` prefix
-      // for internals generally, so this covers devtools too.
       !route.path.startsWith("/__"),
   )
   .map((route) => {
@@ -47,8 +35,6 @@ const entries: Entry[] = router
     return {
       path: route.path,
       title: titleize(last),
-      // A page nested in a directory groups under it; top-level pages fall
-      // into a catch-all bucket.
       group: segments.length > 1 ? titleize(segments[0]!) : "Root",
     };
   })
@@ -60,7 +46,6 @@ for (const entry of entries) {
   if (existing) existing.entries.push(entry);
   else groups.push({ name: entry.group, entries: [entry] });
 }
-/* "Other" last — it reads as leftovers rather than a topic. */
 groups.sort((a, b) =>
   a.name === "Root" ? 1 : b.name === "Root" ? -1 : a.name.localeCompare(b.name),
 );

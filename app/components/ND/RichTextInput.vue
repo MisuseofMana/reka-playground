@@ -35,9 +35,6 @@ const TOOLS: Tool[] = [
   { label: "Clear", command: "removeFormat", title: "Clear formatting" },
 ];
 
-// execCommand is deprecated but still works in every current browser and keeps
-// this dependency free. A real app swaps this component for CKEditor. The
-// styling problem it demonstrates is identical either way.
 function run(tool: Tool) {
   editor.value?.focus();
   document.execCommand(tool.command, false, tool.value);
@@ -48,7 +45,6 @@ function sync() {
   model.value = editor.value?.innerHTML ?? "";
 }
 
-// Set once. Binding v-html here would fight the user's cursor on every keypress.
 onMounted(() => {
   if (editor.value) editor.value.innerHTML = model.value;
 });

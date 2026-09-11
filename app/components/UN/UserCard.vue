@@ -9,12 +9,7 @@ const props = defineProps<{
 const classes = userCardRecipe();
 
 defineSlots<{
-  /** Body copy for this person. */
   default?: () => unknown;
-  /** Forwarded to the card's footer. Receives the user, so the parent can
-      write copy like "Message Ada" without repeating the name. Note the prop
-      is `user`, not `name` — `name` is reserved on `<slot>` and binding it
-      would rename the slot instead of passing a value. */
   actions?: (props: { user: { name: string; role: string } }) => unknown;
 }>();
 </script>
